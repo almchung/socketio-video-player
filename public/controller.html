@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>Socket.io video player</title>
+  <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 13px Helvetica, Arial; }
+  </style>
+  <meta charset="UTF-8">
+  <script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  var video_id;
+  var status_div;
+  
+  status_div = document.getElementById("status");
+  
+  socket.on('connect', function(client){
+    console.log('connected to server');
+    socket.emit('join', "controller connected");
+    document.getElementById("playBttn").onclick = PlayVideo;
+  });
+  
+  socket.on('play', function(client){
+    console.log("PLAY >>>>");
+  });
+  
+  /*socket.on('broadcast',function(data){
+    //document.body.innerHTML = '';
+    status_div.innerHTML = status_div.innerHTML + data.description;
+  });*/
+  
+  function PlayVideo(){
+    console.log ("Play button pressed");
+    socket.emit('button-pushed');
+  }
+</script>
+  </head>
+<body>
+  <input id="playBttn" type="button" value="PLAY" onclick="PlayVideo();" />
+</form>
+</body>
+</html>

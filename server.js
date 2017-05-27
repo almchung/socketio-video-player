@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
+//var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 
@@ -39,6 +39,10 @@ io.sockets.on('connection', function(client){
 
 
 
-http.listen(3000, function(){
+/*http.listen(3000, function(){
   console.log('listening on localhost:3000');
+});*/
+
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });

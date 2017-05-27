@@ -1,14 +1,15 @@
 var express = require('express');
-var app = express();
-//var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var io = require('socket.io');
 var path = require('path');
 
 var connectCounter = 0;
 
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
-});
+const PORT = process.env.PORT || 8877;
+const INDEX = __dirname + '/index.html';
+
+var app = express()
+  .use((req, res) => res.sendFile(INDEX))
+  .listen(PORT, () => console.log('Listening on ${ PORT }'));
 
 app.use(express.static('public'))
 app.use(express.static('files'))
@@ -37,12 +38,6 @@ io.sockets.on('connection', function(client){
         fn({msg :"Connected:" + " " + count});
     });*/
 
-
-
 /*http.listen(3000, function(){
   console.log('listening on localhost:3000');
 });*/
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});

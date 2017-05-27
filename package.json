@@ -5,5 +5,19 @@
   "dependencies": {
     "express": "^4.15.3",
     "path": "^0.12.7"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/almchung/socketio-video-player.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/almchung/socketio-video-player/issues"
+  },
+  "homepage": "https://github.com/almchung/socketio-video-player#readme"
 }

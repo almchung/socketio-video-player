@@ -12,8 +12,9 @@
 <script>
   var socket = io();
   var video_id;
-  var video_url = ["//www.youtube.com/embed/bE3DRGL_1Yc?rel=0", "//www.youtube.com/embed/9B7te184ZpQ?rel=0"];
-  
+  //var video_url = ["//www.youtube.com/embed/bE3DRGL_1Yc?rel=0", "//www.youtube.com/embed/9B7te184ZpQ?rel=0"];
+  var video_url = ["//www.youtube.com/watch_popup?v=bE3DRGL_1Yc", "///www.youtube.com/watch_popup?v=9B7te184ZpQ"];
+
   socket.on('connect', function(client){
     console.log('client connected');
 
@@ -31,13 +32,13 @@
     console.log(">>>> PLAY video " + video_id);
     playVid();
   });
-  
+
   function playVid(){
     document.getElementById("video").src += "&autoplay=1";
     //document.getElementById("video")[0].src += "&autoplay=1";
   }
-  
-  
+
+
   function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
